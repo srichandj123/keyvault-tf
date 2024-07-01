@@ -1,3 +1,4 @@
+#Storageaccount
 resource "azurerm_storage_account" "stgkv" {
   name                          = ""
   resource_group_name           = azurerm_key_vault.kv.resource_group_name
@@ -12,6 +13,7 @@ resource "azurerm_storage_account" "stgkv" {
   tags = local.tags
 }
 
+#vnet
 resource "azurerm_virtual_network" "vnet1" {
   name                = "VNET-1"
   address_space       = ["10.0.0.0/16"]
@@ -19,6 +21,7 @@ resource "azurerm_virtual_network" "vnet1" {
   resource_group_name = azurerm_key_vault.kv.resource_group_name
 }
 
+#Subnet
 resource "azurerm_subnet" "snet1" {
   name                 = "subnet1"
   resource_group_name  = azurerm_key_vault.kv.resource_group_name

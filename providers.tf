@@ -26,6 +26,7 @@ provider "azurerm" {
   }
 }
 
+#RAndom Provider
 provider "random" {
   # Configuration options
 }

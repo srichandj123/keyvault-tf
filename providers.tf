@@ -3,7 +3,7 @@ terraform {
   cloud {
     organization = "jakka"
     workspaces {
-      name = ""
+      name = "keyvault-wkspc"
     }
   }
   required_providers {

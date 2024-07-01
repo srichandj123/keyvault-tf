@@ -1,6 +1,6 @@
 #Storageaccount
 resource "azurerm_storage_account" "stgkv" {
-  name                          = ""
+  name                          = local.stgname
   resource_group_name           = azurerm_key_vault.kv.resource_group_name
   location                      = azurerm_key_vault.kv.location
   account_tier                  = "Standard"

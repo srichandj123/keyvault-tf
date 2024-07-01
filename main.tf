@@ -7,6 +7,8 @@ module "rg-keyvault" {
 }
 
 data "azurerm_client_config" "current" {}
+#Keyvault
+
 resource "azurerm_key_vault" "kv" {
   name                = "jakk-key-vault"
   location            = module.rg-keyvault.location

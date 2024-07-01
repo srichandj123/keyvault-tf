@@ -3,9 +3,7 @@ module "rg-keyvault" {
   version = "3.1.1"
   loc     = "Central US"
   rg_name = "keyvault-rg"
-  tags = {
-    Client = "OCC"
-  }
+  tags    = local.tags
 }
 
 data "azurerm_client_config" "current" {}
@@ -15,7 +13,7 @@ resource "azurerm_key_vault" "kv" {
   resource_group_name = module.rg-keyvault.rg_name
   sku_name            = "standard"
   tenant_id           = data.azurerm_client_config.current.tenant_id
-
+  tags                = local.tags
   dynamic "access_policy" {
     for_each = var.settings
     content {

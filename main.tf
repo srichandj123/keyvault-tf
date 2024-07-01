@@ -1,6 +1,6 @@
 module "rg-keyvault" {
   source  = "app.terraform.io/jakka/rg/module"
-  version = "3.1.0"
+  version = "3.1.1"
   region  = "Central US"
   rgname  = "keyvault-rg"
   tags = {

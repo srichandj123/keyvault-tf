@@ -15,20 +15,21 @@ resource "azurerm_key_vault" "kv" {
   resource_group_name = module.rg-keyvault.rg_name
   sku_name            = "standard"
   tenant_id           = data.azurerm_client_config.current.tenant_id
-  access_policy {
-    tenant_id = data.azurerm_client_config.current.tenant_id
-    object_id = data.azurerm_client_config.current.client_id
-    key_permissions = [
-      "Get", "List", "Delete", "Create"
-    ]
 
-    secret_permissions = [
-      "Get", "List", "Set"
-    ]
+  dynamic "access_policy" {
+    for_each = var.settings
+    content {
+      tenant_id       = data.azurerm_client_config.current.tenant_id
+      object_id       = access_policy.value["objid"]
+      key_permissions = access_policy.value["kperms"]
 
-    storage_permissions = [
-      "Get", "List", "Set"
-    ]
+      secret_permissions = [
+        "Get", "List", "Set"
+      ]
+
+      storage_permissions = [
+        "Get", "List", "Set"
+      ]
+    }
   }
-
 }
